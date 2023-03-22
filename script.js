@@ -17,7 +17,7 @@ function search() {
 // Define the searchSpreadsheet function
 function searchSpreadsheet(searchTerm) {
     // Get a reference to the spreadsheet data
-    const data = spreadsheetData;
+    const data = getData();
 
     // Filter the data based on the search term
     const filteredData = data.filter(row => row[0].toLowerCase().includes(searchTerm));
@@ -101,6 +101,26 @@ function displayResults(results) {
             }
         });
     });
+
+    function getData(callback) {
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            const allText = xhr.responseText;
+            const lines = allText.split('\n');
+            const data = {};
+            for (let i = 0; i < lines.length; i++) {
+              const values = lines[i].split(',');
+              const key = values[0];
+              const val = values[1].replace(/[\[\]]/g, '').split(', ');
+              data[key] = val;
+            }
+            callback(data);
+          }
+        };
+        xhr.open('GET', 'data.csv');
+        xhr.send();
+      }      
 
     // Attach event listener to the search button
     searchButton.addEventListener('click', search);
