@@ -3,53 +3,53 @@
 <head>
   <title>Song Finder</title>
   <style>
+    /* Center the content in the page */
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    #header {
-      background-color: #0072c6;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-    #header img {
-      display: block;
-      margin: 0 auto;
-      max-width: 100%;
-    }
-    #header p {
-      margin: 10px 0 0;
-    }
-    #content {
-      margin: 20px auto;
-      max-width: 800px;
-      padding: 20px;
-    }
+
+    /* Style the search box */
     #search-box {
-      font-size: 16px;
       padding: 10px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
       width: 100%;
+      max-width: 500px;
+      margin-bottom: 10px;
+      font-size: 16px;
     }
-    #results {
-      margin-top: 20px;
+
+    /* Style the search button */
+    button[type="submit"] {
+      padding: 10px 20px;
+      background-color: #008CBA;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
     }
-    #results p {
-      margin: 0;
+
+    button[type="submit"]:hover {
+      background-color: #005F6B;
     }
   </style>
 </head>
 <body>
-  <div id="header">
-    <img src="vidID.png" alt="Video ID">
-    <p>A video's ID is the string of characters found near the end of a youtube link.</p>
+  <div>
+    <img src="vidID.jpg" alt="Image" style="display: block; margin: auto; width: 50%; height: auto;">
+    <p style="text-align: center;">A video's ID is the string of characters found near the end of a youtube link.</p>
   </div>
-  <div id="content">
-    <h1>Search</h1>
-    <input type="text" id="search-box" placeholder="Video ID">
-    <div id="results"></div>
+  <div>
+    <form onsubmit="search(); return false;">
+      <input type="text" id="search-box" placeholder="Video ID">
+      <button type="submit">Search</button>
+    </form>
   </div>
+  <div id="results"></div>
   <script src="script.js"></script>
 </body>
 </html>
