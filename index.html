@@ -1,12 +1,55 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <title>CSV Search Example</title>
-  <script src="script.js"></script>
+  <title>Song Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    #header {
+      background-color: #0072c6;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    #header img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+    #header p {
+      margin: 10px 0 0;
+    }
+    #content {
+      margin: 20px auto;
+      max-width: 800px;
+      padding: 20px;
+    }
+    #search-box {
+      font-size: 16px;
+      padding: 10px;
+      width: 100%;
+    }
+    #results {
+      margin-top: 20px;
+    }
+    #results p {
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
-  <h1>CSV Search Example</h1>
-  <input type="text" id="search-box" placeholder="Video ID">
-  <button onclick="search()">Search</button>
-  <div id="results"></div>
+  <div id="header">
+    <img src="vidID.png" alt="Video ID">
+    <p>A video's ID is the string of characters found near the end of a youtube link.</p>
+  </div>
+  <div id="content">
+    <h1>Search</h1>
+    <input type="text" id="search-box" placeholder="Video ID">
+    <div id="results"></div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
