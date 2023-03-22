@@ -9,12 +9,15 @@ function search() {
       for (var i = 0; i < lines.length; i++) {
         var cols = lines[i].split(',');
         if (cols[0] === input) {
-          output += cols[1] + '<br>';
+          var values = cols[1].replace(/[\[\]']+/g, '').split(', ');
+          for (var j = 0; j < values.length; j++) {
+            output += values[j] + '<br>';
+          }
         }
       }
       document.getElementById('results').innerHTML = output || 'No results found.';
     }
   };
-  xhr.open('GET', 'data.csv');
+  xhr.open('GET', 'path/to/your/csv/file.csv');
   xhr.send();
 }
