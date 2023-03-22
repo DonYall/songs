@@ -10,14 +10,21 @@ function search() {
         var cols = lines[i].split(',');
         if (cols[0] === input) {
           var values = cols[1].replace(/[\[\]']+/g, '').split(', ');
+          output += '<ul>';
           for (var j = 0; j < values.length; j++) {
-            output += values[j] + '<br>';
+            if (values[j].includes("youtube.com")) {
+              var videoId = values[j].split('v=')[1];
+              output += '<li><iframe width="560" height="315" src="https://www.youtube.com/embed/' + videoId + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></li>';
+            } else {
+              output += '<li>' + values[j] + '</li>';
+            }
           }
+          output += '</ul>';
         }
       }
-      document.getElementById('results').innerHTML = output || 'No results found.';
+      document.getElementById('results').innerHTML = output || '<p>No results found.</p>';
     }
   };
-  xhr.open('GET', 'path/to/your/csv/file.csv');
+  xhr.open('GET', 'data.csv');
   xhr.send();
 }
