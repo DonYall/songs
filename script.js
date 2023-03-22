@@ -19,7 +19,7 @@ function search() {
         for (let i = 0; i < lines.length; i++) {
             const cols = lines[i].split(',');
             if (cols[0] === input) {
-                const values = cols[1].replace(/[\[\]']+/g, '').split(', ');
+                const values = cols[1].replace(/""/g, '"').replace(/[\[\]']/g, '').split(', ');
                 output += '<ul>';
                 for (let j = 0; j < values.length; j++) {
                     if (values[j].includes('youtube.com')) {
