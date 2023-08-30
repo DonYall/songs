@@ -1,4 +1,3 @@
-// Define the function to get the data from the CSV file
 function getData(callback) {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
