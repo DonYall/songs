@@ -24,7 +24,7 @@ function search() {
                     const videoLink = values[j].trim();
                     if (videoLink.includes('youtube.com')) {
                         const videoId = videoLink.split('v=')[1];
-                        output += `<li><iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></li>`;
+                        output += `<li><a href="https://www.youtube.com/watch?v=${videoId}" target="_blank">${videoLink}</a></li>`;
                     } else {
                         output += `<li>${videoLink}</li>`;
                     }
