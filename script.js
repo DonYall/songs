@@ -18,14 +18,15 @@ function search() {
         for (let i = 0; i < lines.length; i++) {
             const cols = lines[i].split(',');
             if (cols[0] === input) {
-                const values = JSON.parse(cols[1]);
+                const values = cols[1].split('|');
                 output += '<ul>';
                 for (let j = 0; j < values.length; j++) {
-                    if (values[j].includes('youtube.com')) {
-                        const videoId = values[j].split('v=')[1];
+                    const videoLink = values[j].trim();
+                    if (videoLink.includes('youtube.com')) {
+                        const videoId = videoLink.split('v=')[1];
                         output += `<li><iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></li>`;
                     } else {
-                        output += `<li>${values[j]}</li>`;
+                        output += `<li>${videoLink}</li>`;
                     }
                 }
                 output += '</ul>';
