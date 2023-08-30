@@ -1,3 +1,15 @@
+function getData(callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            const result = xhr.responseText;
+            callback(result);
+        }
+    };
+    xhr.open('GET', 'data.csv');
+    xhr.send();
+}
+
 function search() {
     const input = document.getElementById('search-box').value;
     getData(result => {
